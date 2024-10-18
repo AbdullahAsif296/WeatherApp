@@ -4,7 +4,7 @@ WeatherApp is a fully responsive weather dashboard that provides current weather
 
 ## Live Demo
 
-You can access the live version of WeatheAppr at: [https://nexus-weather-511.web.app](https://nexus-weather-511.web.app)
+You can access the live version of WeatheAppr at: [[https://nexus-weather-511.web.app](https://abdullahasif296.github.io/WeatherApp/)]
 
 ## Features
 
@@ -43,8 +43,8 @@ The dashboard uses the browser's geolocation API to detect the user's location a
 
 1. Clone the repository:
    ```
-   git clone 
-   cd 
+   git clone https://abdullahasif296.github.io/WeatherApp/
+
    ```
 
 2. Open `index.html` in your web browser to view the landing page.
@@ -59,11 +59,11 @@ To run the project locally with full functionality, you'll need to set up the fo
 
 1. OpenWeather API:
    - Sign up at [OpenWeather](https://openweathermap.org/api)
-   - Replace `YOUR_OPENWEATHER_API_KEY` in `src/js/app.js` with your actual API key
+   - Replace `YOUR_OPENWEATHER_API_KEY` in `main.js` with your actual API key
 
 2. Gemini API:
    - Set up a project in [Gemini](https://ai.google.dev/aistudio)
-   - Replace the `agent-id` in the `<df-messenger>` tag in both HTML files with your Dialogflow agent ID
+   - Replace the 'YOUR_Gemini_API_KEY' in main2.js with your actual API key
 
 
 
