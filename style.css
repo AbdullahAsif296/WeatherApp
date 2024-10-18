@@ -1,0 +1,382 @@
+body {
+  background: linear-gradient(135deg, #f2f2f2 50%, #e0e0e0);
+  color: #ffffff; /* Correct placement of !important */
+}
+.weather-data {
+  transition: background-color 2s ease, box-shadow 2s ease, transform 1s ease;
+}
+.weather-data:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Example scale on hover */
+}
+canvas {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.chart-card {
+  height: 300px; /* Reduced height */
+  width: 100%;
+}
+.error {
+  display: none;
+}
+.dashboard-card {
+  background-color: rgba(221, 221, 226, 0.8);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-container {
+  flex-grow: 1;
+  position: relative;
+  height: 100%; /* Ensures the canvas uses the full height */
+}
+body {
+  font-family: Arial, sans-serif;
+  position: relative; /* Ensure all positioned elements are relative to the body */
+  background: none; /* Remove the linear gradient background */
+  overflow: hidden;
+}
+
+/* Set sky, sun, and clouds behind all other content */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  z-index: -1; /* Send sky to background */
+  overflow: hidden;
+}
+.sunny {
+  background: linear-gradient(to bottom, #87ceeb, #b9e6ee); /* Default sky */
+}
+.sun {
+  position: absolute;
+  top: 50px; /* Sun is moved to the top */
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: yellow;
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(255, 223, 0, 0.7);
+  transform: translateX(-50%);
+  animation: pulse 4s ease-in-out infinite;
+  z-index: -1; /* Send moon to background */
+}
+
+#back {
+  position: fixed;
+  pointer-events: none;
+}
+/* Cloud styles */
+.cloud {
+  position: absolute;
+  width: 350px;
+  height: 120px;
+  background: #f2f9fe;
+  background: linear-gradient(to bottom, #f2f9fe 5%, #d6f0fd 100%);
+  border-radius: 100px;
+  margin: 0 auto;
+  top: 20px; /* Position clouds at the top */
+  left: calc(50% - 175px); /* Center the clouds horizontally */
+  animation: moveClouds 15s linear infinite; /* Animation for cloud movement */
+}
+
+.cloud:before,
+.cloud:after {
+  content: "";
+  position: absolute;
+  background: #f2f9fe;
+  z-index: -1;
+}
+
+.cloud:before {
+  width: 180px;
+  height: 180px;
+  top: -90px;
+  right: 50px;
+  border-radius: 200px;
+}
+
+.cloud:after {
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: 50px;
+  border-radius: 100px;
+}
+
+/* Rain styles */
+.rain {
+  position: absolute;
+  width: 2px; /* Width of the raindrop */
+  height: 20px; /* Height of the raindrop */
+  background: rgba(173, 216, 230, 0.8); /* Light blue color for rain */
+  bottom: 100%; /* Start above the top of the viewport */
+  animation: fall 0.5s linear infinite; /* Animation for falling */
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0); /* Start at the top */
+  }
+  100% {
+    transform: translateY(100vh); /* Move down the viewport */
+  }
+}
+
+/* Cloud movement animation */
+@keyframes moveClouds {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px); /* Move clouds slightly to the right */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.cloud {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50px;
+  opacity: 0.9;
+  z-index: -1; /*Send clouds to background*/
+  display: none;
+}
+.cloud1 {
+  width: 250px;
+  height: 80px;
+  top: 100px;
+  left: -250px;
+  border-radius: 100px;
+  animation: moveCloud 15s linear infinite;
+}
+
+.cloud1::before,
+.cloud1::after {
+  content: "";
+  position: absolute;
+  background: #ffffff;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: -25px;
+}
+
+.cloud1::before {
+  left: 30px;
+}
+
+.cloud1::after {
+  right: 30px;
+}
+
+/* Second cloud */
+.cloud2 {
+  width: 200px;
+  height: 60px;
+  top: 200px;
+  left: 120vw;
+  border-radius: 100px;
+  animation: moveCloudReverse 15s linear infinite;
+}
+
+.cloud2::before,
+.cloud2::after {
+  content: "";
+  position: absolute;
+  background: #ffffff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  top: -20px;
+}
+
+.cloud2::before {
+  left: 20px;
+}
+
+.cloud2::after {
+  right: 20px;
+}
+.cloud3 {
+  width: 110px;
+  height: 60px;
+  top: 200px;
+  left: 500px;
+  animation: moveClouds 35s linear infinite;
+}
+
+.cloud4 {
+  width: 140px;
+  height: 75px;
+  top: 50px;
+  left: 700px;
+  animation: moveClouds 28s linear infinite;
+}
+
+.cloud5 {
+  width: 120px;
+  height: 65px;
+  top: 250px;
+  left: 900px;
+  animation: moveClouds 33s linear infinite;
+}
+
+/* Sun pulsing animation */
+@keyframes pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* Clouds moving animation */
+@keyframes moveCloud {
+  0% {
+    left: -250px;
+  }
+  100% {
+    left: 120vw;
+  }
+}
+
+@keyframes moveCloudReverse {
+  0% {
+    left: 120vw;
+  }
+  100% {
+    left: -250px;
+  }
+}
+.night {
+  background: linear-gradient(to bottom, #2c3e50, #1a1a2e); /* Dark night sky */
+}
+
+.moon {
+  position: absolute;
+  top: 50px;
+  left: 55%;
+  width: 120px;
+  height: 120px;
+  background-color: #f0e68c; /* Light yellowish color for moon */
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(240, 230, 140, 0.5); /* Soft glow around the moon */
+  transform: translateX(-50%);
+  display: none;
+  z-index: -1; /* Send moon to background */
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: none;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  width: 4px; /* Slightly larger */
+  height: 4px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8),
+    /* Glow */ 0 0 15px rgba(255, 255, 255, 0.6),
+    /* Outer glow */ 0 0 20px rgba(255, 255, 255, 0.4); /* Fainter, larger glow */
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7; /* Slight dimming */
+    transform: scale(1.2); /* Slight scaling for effect */
+  }
+}
+
+#loadingSpinner {
+  display: none;
+}
+@keyframes moveClouds {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.rotate-animation {
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Drop Animation */
+@keyframes drop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Add animation classes */
+.chart-container-delay {
+  animation: fadeIn 1s ease-out 1s forwards; /* Delayed for 1s */
+  opacity: 0; /* Start hidden */
+}
+
+.chart-container-drop {
+  animation: drop 1s ease-in-out forwards; /* Drop animation */
+  opacity: 0; /* Start hidden */
+}
+/* Other elements should be placed above the background */
+.main-content,
+.sidebar,
+.weather-data,
+.search-bar {
+  z-index: 1; /* Bring the main content above the sky */
+}
