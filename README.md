@@ -4,7 +4,7 @@ WeatherApp is a fully responsive weather dashboard that provides current weather
 
 ## Live Demo
 
-You can access the live version of WeatheAppr at: [[https://nexus-weather-511.web.app](https://abdullahasif296.github.io/WeatherApp/)]
+You can access the live version of WeatheAppr at: [(https://abdullahasif296.github.io/WeatherApp/)]
 
 ## Features
 
