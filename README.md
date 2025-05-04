@@ -38,10 +38,10 @@ The dashboard uses the browser's geolocation API to detect the user's location a
 - Gemini API
 - Chart.js
 
-
 ## Setup and Running Locally
 
 1. Clone the repository:
+
    ```
    git clone https://abdullahasif296.github.io/WeatherApp/
 
@@ -58,14 +58,13 @@ The dashboard uses the browser's geolocation API to detect the user's location a
 To run the project locally with full functionality, you'll need to set up the following API keys:
 
 1. OpenWeather API:
+
    - Sign up at [OpenWeather](https://openweathermap.org/api)
    - Replace `YOUR_OPENWEATHER_API_KEY` in `main.js` with your actual API key
 
 2. Gemini API:
    - Set up a project in [Gemini](https://ai.google.dev/aistudio)
    - Replace the 'YOUR_Gemini_API_KEY' in main2.js with your actual API key
-
-
 
 ## Additional Notes
 
