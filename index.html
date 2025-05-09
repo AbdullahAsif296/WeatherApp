@@ -18,30 +18,50 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .chart-container {
+        position: relative;
+        width: 100%;
+        height: 400px; /* Increased height for better visibility */
+        margin: 0 auto;
+        max-height: 50vh; /* Responsive height that adapts to viewport */
+      }
+    </style>
   </head>
   <body class="font-sans">
     <div class="flex flex-col md:flex-row min-h-screen">
       <!-- Sidebar -->
-      <aside
-        class="bg-black text-white w-full md:w-1/4 lg:w-64 p-6 flex flex-col items-start z-10"
-      >
-        <h1 class="text-2xl font-bold mb-6 mx-auto">Weather App</h1>
-        <nav class="space-y-2 mx-auto mt-4 w-full">
-          <a
-            href="index.html"
-            class="nav-link block py-2 px-4 rounded-md transition duration-300 bg-white bg-opacity-10 text-white hover:bg-opacity-20 transform hover:scale-105 mb-4"
-          >
-            <i class="fas fa-tachometer-alt mr-2" aria-hidden="true"></i>
-            <span class="hidden lg:inline">Dashboard</span>
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo-container">
+            <i class="fas fa-cloud-sun logo-icon"></i>
+            <h1 class="logo-text">Weather<span>App</span></h1>
+          </div>
+        </div>
+
+        <div class="sidebar-divider">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="index.html" class="nav-link active">
+            <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+            <span class="ml-3">Dashboard</span>
           </a>
-          <a
-            href="table.html"
-            class="nav-link block py-2 px-4 rounded-md transition duration-300 text-white hover:bg-white hover:bg-opacity-10 transform hover:scale-105"
-          >
-            <i class="fas fa-table mr-2" aria-hidden="true"></i>
-            <span class="hidden lg:inline">Tables</span>
+          <a href="table.html" class="nav-link">
+            <i class="fas fa-table" aria-hidden="true"></i>
+            <span class="ml-3">Tables</span>
           </a>
         </nav>
+
+        <div class="sidebar-footer">
+          <div class="weather-date">
+            <div class="current-date">May 8, 2025</div>
+            <div class="app-version">v2.1.0</div>
+          </div>
+        </div>
       </aside>
 
       <!-- Main Content -->
@@ -84,24 +104,74 @@
           <!-- User Profile Popup -->
           <div
             id="popup"
-            class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50"
+            class="hidden fixed inset-0 bg-gray-800 bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50"
           >
-            <div
-              class="bg-white rounded-lg shadow-lg p-6 relative max-w-md w-full"
-            >
-              <div class="flex items-center justify-center mb-4">
-                <div class="bg-black rounded-full p-4">
-                  <i
-                    class="fas fa-user-circle fa-5x text-white"
-                    aria-hidden="true"
-                  ></i>
+            <div class="profile-card relative max-w-md w-full overflow-hidden">
+              <!-- Profile Header with Background -->
+              <div class="profile-header relative">
+                <div class="profile-cover-img"></div>
+                <div class="profile-avatar-container">
+                  <div class="profile-avatar">
+                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                  </div>
+                  <div class="profile-status online"></div>
                 </div>
               </div>
-              <h2 class="text-lg font-bold text-center">Abdullah Asif</h2>
-              <p class="mt-2 text-center">Student at Fast NUCES.</p>
+
+              <!-- Profile Info -->
+              <div class="profile-info">
+                <h2 class="profile-name">Abdullah Asif</h2>
+                <p class="profile-title">Weather Explorer</p>
+
+                <div class="profile-stats">
+                  <div class="stats-item">
+                    <span class="stats-value">42</span>
+                    <span class="stats-label">Cities</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="stats-value">156</span>
+                    <span class="stats-label">Searches</span>
+                  </div>
+                  <div class="stats-item">
+                    <span class="stats-value">24</span>
+                    <span class="stats-label">Favorites</span>
+                  </div>
+                </div>
+
+                <div class="profile-details">
+                  <div class="detail-item">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <span>abdullah@example.com</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <span>Islamabad, PK</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-building" aria-hidden="true"></i>
+                    <span>Student at Fast NUCES</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    <span>Member since 2023</span>
+                  </div>
+                </div>
+
+                <div class="profile-actions">
+                  <button class="action-btn primary">
+                    <i class="fas fa-edit" aria-hidden="true"></i>
+                    Edit Profile
+                  </button>
+                  <button class="action-btn secondary">
+                    <i class="fas fa-cog" aria-hidden="true"></i>
+                    Settings
+                  </button>
+                </div>
+              </div>
+
               <button
                 id="closePopup"
-                class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 transition duration-200"
+                class="absolute top-3 right-3 text-white hover:text-gray-200 transition duration-200"
                 aria-label="Close popup"
               >
                 <i class="fas fa-times fa-lg" aria-hidden="true"></i>
@@ -112,39 +182,33 @@
 
         <!-- Error Message -->
         <div
-          class="error bg-[#dd0131] bg-opacity-60 shadow-lg rounded-lg p-8 max-w-md w-full mx-auto relative hidden"
+          class="error hidden fixed inset-0 bg-[#cc1f1f] flex flex-col items-center justify-center z-50"
         >
-          <div
-            class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 rounded-full p-3"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-              />
-            </svg>
+          <div class="flex flex-col items-center">
+            <div class="bg-yellow-400 rounded-full p-3 mb-4">
+              <i class="fas fa-exclamation-triangle text-white text-xl"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-white mb-3">City Not Found</h1>
+            <p class="text-white text-center max-w-md px-4">
+              We couldn't find the city you were looking for. Please check the
+              spelling and try again.
+            </p>
           </div>
-          <h1 class="text-2xl font-bold text-white mt-6 mb-4 text-center">
-            City Not Found
-          </h1>
-          <p class="text-white mb-6 text-center">
-            We couldn't find the city you were looking for. Please check the
-            spelling and try again.
-          </p>
         </div>
 
         <!-- Loading Spinner -->
         <div id="loadingSpinner" class="hidden">
-          <div class="loading-spinner"></div>
+          <div class="loading-container">
+            <div class="loading-spinner-wrapper">
+              <div class="loading-spinner-inner">
+                <i class="fas fa-cloud-sun weather-icon-spin"></i>
+                <span class="loading-spinner-circle"></span>
+              </div>
+            </div>
+            <div class="loading-spinner-particles">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
           <div class="loading-text">Loading weather data...</div>
         </div>
 

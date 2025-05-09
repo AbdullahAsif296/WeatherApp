@@ -571,13 +571,10 @@ $(document).ready(function () {
             ],
           },
           options: {
+            responsive: true,
+            maintainAspectRatio: false,
             layout: {
-              padding: {
-                left: 20,
-                right: 20,
-                top: 20,
-                bottom: 20,
-              },
+              padding: 10,
             },
             scales: {
               x: {
@@ -602,6 +599,9 @@ $(document).ready(function () {
               legend: {
                 labels: {
                   color: "white", // Legend text color
+                  font: {
+                    size: 14,
+                  },
                 },
               },
             },
@@ -639,19 +639,30 @@ $(document).ready(function () {
           },
           options: {
             responsive: true,
+            maintainAspectRatio: false,
+            cutout: "60%",
             plugins: {
               legend: {
+                position: "top",
                 labels: {
+                  padding: 15,
                   color: "white", // Legend text color
+                  font: {
+                    size: 14,
+                  },
                 },
+              },
+              tooltip: {
+                bodyFont: {
+                  size: 14,
+                },
+                padding: 10,
               },
             },
             layout: {
               padding: {
-                left: 20,
-                right: 20,
-                top: 20,
-                bottom: 20,
+                top: 10,
+                bottom: 10,
               },
             },
           },
@@ -670,22 +681,26 @@ $(document).ready(function () {
                 fill: false,
                 borderColor: "rgba(75, 192, 192, 1)",
                 tension: 0.1,
+                pointBackgroundColor: "white",
+                pointBorderColor: "rgba(75, 192, 192, 1)",
+                pointRadius: 6,
+                pointHoverRadius: 8,
               },
             ],
           },
           options: {
+            responsive: true,
+            maintainAspectRatio: false,
             layout: {
-              padding: {
-                left: 20,
-                right: 20,
-                top: 20,
-                bottom: 20,
-              },
+              padding: 10,
             },
             scales: {
               x: {
                 ticks: {
                   color: "white", // X-axis text color
+                  font: {
+                    size: 12,
+                  },
                 },
                 grid: {
                   color: "rgba(255, 255, 255, 0.5)", // Lighter grid for better visibility
@@ -695,6 +710,9 @@ $(document).ready(function () {
                 beginAtZero: true,
                 ticks: {
                   color: "white", // Y-axis text color
+                  font: {
+                    size: 12,
+                  },
                 },
                 grid: {
                   color: "rgba(255, 255, 255, 0.5)", // Lighter grid for better visibility
@@ -705,6 +723,9 @@ $(document).ready(function () {
               legend: {
                 labels: {
                   color: "white", // Legend text color
+                  font: {
+                    size: 14,
+                  },
                 },
               },
             },
